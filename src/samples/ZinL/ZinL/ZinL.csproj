@@ -18,6 +18,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,6 +26,10 @@
       <ProjectReference Include="..\..\..\core\Elsa\Elsa.csproj" />
       <ProjectReference Include="..\..\..\dashboard\Elsa.Dashboard\Elsa.Dashboard.csproj" />
       <ProjectReference Include="..\..\..\persistence\Elsa.Persistence.EntityFrameworkCore\Elsa.Persistence.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\" />
     </ItemGroup>
 
 </Project>
