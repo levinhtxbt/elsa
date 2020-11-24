@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using ZinL.Activities.Customer.Activities;
 using ZinL.Domain;
 using Microsoft.OpenApi.Models;
+using ZinL.Services;
 
 namespace ZinL
 {
@@ -34,6 +35,7 @@ namespace ZinL
         {
             services.AddActivity<SayHelloWorld>();
 
+
             services
                 // Required services for Elsa to work. Registers things like `IWorkflowInvoker`.
                 .AddElsa(elsa => elsa
@@ -45,6 +47,9 @@ namespace ZinL
                 .AddElsaDashboard();
 
             services.AddControllers();
+
+            services.AddScoped<IWorkflowDefinitionService, WorkflowDefinitionService>();
+
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -74,7 +79,6 @@ namespace ZinL
             app.UseHttpActivities();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
-            app.UseWelcomePage();
         }
     }
 }

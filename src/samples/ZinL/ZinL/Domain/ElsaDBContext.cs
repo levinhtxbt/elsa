@@ -10,6 +10,7 @@ namespace ZinL.Domain
 {
     public class ElsaDBContext : ElsaContext
     {
+        public int Number { get; set; }
         public ElsaDBContext(DbContextOptions<ElsaDBContext> options) : base(options)
         {
 
