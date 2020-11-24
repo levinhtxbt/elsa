@@ -8,6 +8,8 @@
         <!--<PackageReference Include="Elsa" Version="1.4.4" />
         <PackageReference Include="Elsa.Dashboard" Version="1.4.4" />
         <PackageReference Include="Elsa.Persistence.EntityFrameworkCore" Version="1.4.4" />-->
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using Elsa.Persistence.EntityFrameworkCore.DbContexts;
+using AutoMapper;
 
 namespace ZinL.Services
 {
@@ -24,6 +25,7 @@ namespace ZinL.Services
         private readonly IWorkflowInstanceStore _workflowInstanceStore;
         private readonly IWorkflowPublisher _publisher;
         private readonly IWorkflowSerializer _serializer;
+        private readonly AutoMapper.IMapper _mapper;
 
 
         public WorkflowDefinitionService(
@@ -32,7 +34,8 @@ namespace ZinL.Services
            IWorkflowDefinitionStore workflowDefinitionStore,
            IWorkflowInstanceStore workflowInstanceStore,
            IWorkflowPublisher publisher,
-           IWorkflowSerializer serializer)
+           IWorkflowSerializer serializer,
+           AutoMapper.IMapper mapper)
         {
             //_elsaDBContext = (ElsaDBContext)serviceProvider.GetService<ElsaDBContext>();
             _elsaDBContext = (ElsaDBContext)elsaDBContext;
@@ -40,6 +43,7 @@ namespace ZinL.Services
             _workflowInstanceStore = workflowInstanceStore;
             _publisher = publisher;
             _serializer = serializer;
+            _mapper = mapper;
         }
 
         public async Task<List<WorkflowDefinitionListResponse>> GetListDefinitionAsync(CancellationToken cancellationToken)
@@ -61,7 +65,8 @@ namespace ZinL.Services
                 WorkflowDefinitions = groups.ToList()
             };
 
-            return new List<WorkflowDefinitionListResponse>();
+            //return new List<WorkflowDefinitionListResponse>();
+            return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
         }
 
         private async Task<WorkflowDefinitionListItemModel> CreateWorkflowDefinitionListItemModelAsync(

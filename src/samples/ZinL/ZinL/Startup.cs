@@ -18,6 +18,8 @@ using ZinL.Activities.Customer.Activities;
 using ZinL.Domain;
 using Microsoft.OpenApi.Models;
 using ZinL.Services;
+using AutoMapper;
+using ZinL.MappingProfile;
 
 namespace ZinL
 {
@@ -47,15 +49,16 @@ namespace ZinL
                 .AddElsaDashboard();
 
             services.AddControllers();
-
             services.AddScoped<IWorkflowDefinitionService, WorkflowDefinitionService>();
-
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+            // Auto Mapper Configurations
+            services.AddAutoMapper(typeof(AutoMapperConfig));
+            services.AddMvc().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
