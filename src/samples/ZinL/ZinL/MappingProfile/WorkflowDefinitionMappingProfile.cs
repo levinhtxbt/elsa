@@ -24,7 +24,7 @@ namespace ZinL.MappingProfile
         private void ModelToResponse()
         {
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionListResponse>();
-
+            CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionDetailResponse>();
 
         }
     }

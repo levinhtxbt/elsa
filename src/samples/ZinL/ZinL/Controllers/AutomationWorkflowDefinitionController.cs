@@ -9,12 +9,12 @@ namespace ZinL.Controllers
     [Area("AWF")]
     [Route("[area]/workflow-definition")]
     [ApiController]
-    public class WorkflowDefinitionController : ControllerBase
+    public class AutomationWorkflowDefinitionController : ControllerBase
     {
 
         private readonly IWorkflowDefinitionService _workflowDefinitionService;
 
-        public WorkflowDefinitionController(IWorkflowDefinitionService workflowDefinitionService)
+        public AutomationWorkflowDefinitionController(IWorkflowDefinitionService workflowDefinitionService)
         {
             _workflowDefinitionService = workflowDefinitionService;
         }
@@ -25,6 +25,18 @@ namespace ZinL.Controllers
             if (ModelState.IsValid)
             {
                 var response = await _workflowDefinitionService.GetListDefinitionAsync(cancellationToken);
+                return Ok(response);
+            }
+            else
+                return StatusCode(StatusCodes.Status404NotFound, $"The workflow definition not found");
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetDetailWorkflowDefinition(string id, CancellationToken cancellationToken)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _workflowDefinitionService.GetDetailDefinitionAsync(id, cancellationToken);
                 return Ok(response);
             }
             else

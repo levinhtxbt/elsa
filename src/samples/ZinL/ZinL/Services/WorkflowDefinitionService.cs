@@ -45,29 +45,23 @@ namespace ZinL.Services
             _serializer = serializer;
             _mapper = mapper;
         }
-
+      
         public async Task<List<WorkflowDefinitionListResponse>> GetListDefinitionAsync(CancellationToken cancellationToken)
         {
             var workflows = await _workflowDefinitionStore.ListAsync(
                 VersionOptions.LatestOrPublished, cancellationToken);
 
-            var workflowModels = new List<WorkflowDefinitionListItemModel>();
-
-            foreach (var workflow in workflows)
-            {
-                var workflowModel = await CreateWorkflowDefinitionListItemModelAsync(workflow, cancellationToken);
-                workflowModels.Add(workflowModel);
-            }
-
-            var groups = workflowModels.GroupBy(x => x.WorkflowDefinition.DefinitionId);
-            var model = new WorkflowDefinitionListViewModel
-            {
-                WorkflowDefinitions = groups.ToList()
-            };
-
-            //return new List<WorkflowDefinitionListResponse>();
             return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
         }
+
+        public async Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
+        {
+            var workflow = await _workflowDefinitionStore.GetByIdAsync(id, 
+               VersionOptions.LatestOrPublished, cancellationToken);
+
+            return _mapper.Map<WorkflowDefinitionDetailResponse>(workflow);
+        }
+
 
         private async Task<WorkflowDefinitionListItemModel> CreateWorkflowDefinitionListItemModelAsync(
            WorkflowDefinitionVersion workflowDefinition, CancellationToken cancellationToken)
