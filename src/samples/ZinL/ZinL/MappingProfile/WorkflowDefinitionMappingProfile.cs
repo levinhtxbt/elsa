@@ -25,7 +25,8 @@ namespace ZinL.MappingProfile
         {
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionListResponse>();
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionDetailResponse>();
-
+            CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionCreateResponse>();
+            CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionEditResponse>();
         }
     }
 }
