@@ -1,6 +1,7 @@
 using Elsa.Dashboard.Areas.Elsa.ViewModels;
 using Elsa.Models;
 using Microsoft.AspNetCore.Http;
+using SS.Lib.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace ZinL.Controllers
     [Area("AWF")]
     [Route("[area]/workflow-definition")]
     [ApiController]
-    public class AutomationWorkflowDefinitionController : ControllerBase
+    public class AutomationWorkflowDefinitionController : SS.Lib.Http.ControllerBase
     {
 
         private readonly IWorkflowDefinitionService _workflowDefinitionService;
@@ -30,7 +31,7 @@ namespace ZinL.Controllers
                 return Ok(response);
             }
             else
-                return StatusCode(StatusCodes.Status404NotFound, $"The workflow definition not found");
+                return ThrowModelErrorsException();
         }
 
         [HttpGet("{id}")]
@@ -42,7 +43,7 @@ namespace ZinL.Controllers
                 return Ok(response);
             }
             else
-                return StatusCode(StatusCodes.Status404NotFound, $"The workflow definition not found");
+                return ThrowModelErrorsException();
         }
 
         [HttpPost]
@@ -54,7 +55,7 @@ namespace ZinL.Controllers
                 return Ok(response);
             }
             else
-                return StatusCode(StatusCodes.Status404NotFound, $"The workflow definition can't create");
+                return ThrowModelErrorsException();
         }
 
         [HttpPut("{id}")]
@@ -66,7 +67,19 @@ namespace ZinL.Controllers
                 return Ok(response);
             }
             else
-                return StatusCode(StatusCodes.Status404NotFound, $"The workflow definition can't edit");
+                return ThrowModelErrorsException();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteWorkflowDefinition(string id, CancellationToken cancellationToken)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _workflowDefinitionService.DeleteDefinitionAsunc(id, cancellationToken);
+                return Ok(response);
+            }
+            else
+                return ThrowModelErrorsException();
         }
     }
 }

@@ -18,6 +18,9 @@ using AutoMapper;
 using Elsa.WorkflowDesigner.Models;
 using Elsa.Serialization.Formatters;
 using Elsa.Dashboard.Models;
+using SS.Lib.Http;
+using Microsoft.AspNetCore.Http;
+using ZinL.Models.Common;
 
 namespace ZinL.Services
 {
@@ -52,15 +55,39 @@ namespace ZinL.Services
             var workflows = await _workflowDefinitionStore.ListAsync(
                 VersionOptions.LatestOrPublished, cancellationToken);
 
-            return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
+            if (workflows != null)
+            {
+                return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
+            }
+            throw new ErrorException(StatusCodes.Status404NotFound, "Workflow definition is not found.");
         }
 
         public async Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
         {
-            var workflow = await _workflowDefinitionStore.GetByIdAsync(id, 
-               VersionOptions.LatestOrPublished, cancellationToken);
+            var workflowDefinition = await _publisher.GetDraftAsync(id, cancellationToken);
 
-            return _mapper.Map<WorkflowDefinitionDetailResponse>(workflow);
+            if (workflowDefinition == null)
+                throw new ErrorException(StatusCodes.Status404NotFound, $"Can't not found workflow definition with {id}");
+
+            var workflowModel = new WorkflowModel
+            {
+                Activities = workflowDefinition.Activities.Select(x => new ActivityModel(x)).ToList(),
+                Connections = workflowDefinition.Connections.Select(x => new ConnectionModel(x)).ToList()
+            };
+
+            var model = new WorkflowDefinitionEditModel
+            {
+                Id = workflowDefinition.DefinitionId,
+                Name = workflowDefinition.Name,
+                Json = _serializer.Serialize(workflowModel, JsonTokenFormatter.FormatName),
+                Description = workflowDefinition.Description,
+                IsSingleton = workflowDefinition.IsSingleton,
+                IsDisabled = workflowDefinition.IsDisabled,
+                //ActivityDefinitions = options.Value.ActivityDefinitions.ToArray(),
+                WorkflowModel = workflowModel
+            };
+
+            return _mapper.Map<WorkflowDefinitionDetailResponse>(workflowDefinition);
         }
 
 
@@ -118,7 +145,7 @@ namespace ZinL.Services
             var workflow = await _workflowDefinitionStore.GetByIdAsync(id, VersionOptions.Latest, cancellationToken);
 
             if (workflow == null)
-                throw new Exception($"can't not found workflow definition with {id}");
+                throw new ErrorException(StatusCodes.Status404NotFound, $"Can't not found workflow definition with {id}");
 
             var postedWorkflow = _serializer.Deserialize<WorkflowModel>(request.Json, JsonTokenFormatter.FormatName);
 
@@ -134,7 +161,7 @@ namespace ZinL.Services
             workflow.IsDisabled = request.IsDisabled;
             workflow.IsSingleton = request.IsSingleton;
 
-            var publish = request.SubmitAction == "publish";
+            var publish = request.SubmitAction == Constants.PublishVersion;
 
             if (publish)
             {
@@ -148,9 +175,11 @@ namespace ZinL.Services
             return _mapper.Map<WorkflowDefinitionEditResponse>(workflow);
         }
 
-        public Task<string> DeleteDefinitionAsunc(string id, CancellationToken cancellationToken)
+        public async Task<string> DeleteDefinitionAsunc(string id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _workflowDefinitionStore.DeleteAsync(id, cancellationToken);
+
+            return id;
         }
     }
 }

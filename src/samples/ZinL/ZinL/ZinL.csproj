@@ -31,4 +31,16 @@
       <ProjectReference Include="..\..\..\persistence\Elsa.Persistence.EntityFrameworkCore\Elsa.Persistence.EntityFrameworkCore.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="SS.Lib">
+        <HintPath>..\..\..\package\SS.Lib.dll</HintPath>
+      </Reference>
+      <Reference Include="SS.Lib.Http">
+        <HintPath>..\..\..\package\SS.Lib.Http.dll</HintPath>
+      </Reference>
+      <Reference Include="SS.Lib.Linq">
+        <HintPath>..\..\..\package\SS.Lib.Linq.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
