@@ -21,6 +21,7 @@ using Elsa.Dashboard.Models;
 using SS.Lib.Http;
 using Microsoft.AspNetCore.Http;
 using ZinL.Models.Common;
+using Elsa.Dashboard.Options;
 
 namespace ZinL.Services
 {
@@ -32,6 +33,7 @@ namespace ZinL.Services
         private readonly IWorkflowPublisher _publisher;
         private readonly IWorkflowSerializer _serializer;
         private readonly AutoMapper.IMapper _mapper;
+        private readonly IOptions<ElsaDashboardOptions> _options;
 
 
         public WorkflowDefinitionService(
@@ -40,7 +42,8 @@ namespace ZinL.Services
            IWorkflowInstanceStore workflowInstanceStore,
            IWorkflowPublisher publisher,
            IWorkflowSerializer serializer,
-           AutoMapper.IMapper mapper)
+           AutoMapper.IMapper mapper,
+           IOptions<ElsaDashboardOptions> options)
         {
             _elsaDBContext = (ElsaDBContext)elsaDBContext;
             _workflowDefinitionStore = workflowDefinitionStore;
@@ -48,6 +51,7 @@ namespace ZinL.Services
             _publisher = publisher;
             _serializer = serializer;
             _mapper = mapper;
+            _options = options;
         }
       
         public async Task<List<WorkflowDefinitionListResponse>> GetListDefinitionAsync(CancellationToken cancellationToken)
@@ -55,11 +59,27 @@ namespace ZinL.Services
             var workflows = await _workflowDefinitionStore.ListAsync(
                 VersionOptions.LatestOrPublished, cancellationToken);
 
-            if (workflows != null)
+            if (workflows == null)
             {
-                return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
+                throw new ErrorException(StatusCodes.Status404NotFound, "Workflow definition is not found.");
             }
-            throw new ErrorException(StatusCodes.Status404NotFound, "Workflow definition is not found.");
+
+            var workflowModels = new List<WorkflowDefinitionListItemModel>();
+            foreach (var workflow in workflows)
+            {
+                var workflowModel = await CreateWorkflowDefinitionListItemModelAsync(workflow, cancellationToken);
+                workflowModels.Add(workflowModel);
+            }
+
+            var groups = workflowModels.GroupBy(x => x.WorkflowDefinition.DefinitionId);
+            var model = new WorkflowDefinitionListViewModel
+            {
+                WorkflowDefinitions = groups.ToList()
+            };
+
+            //var result  = _mapper.Map<>
+
+            return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
         }
 
         public async Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
@@ -83,11 +103,11 @@ namespace ZinL.Services
                 Description = workflowDefinition.Description,
                 IsSingleton = workflowDefinition.IsSingleton,
                 IsDisabled = workflowDefinition.IsDisabled,
-                //ActivityDefinitions = options.Value.ActivityDefinitions.ToArray(),
+                ActivityDefinitions = _options.Value.ActivityDefinitions.ToArray(),
                 WorkflowModel = workflowModel
             };
 
-            return _mapper.Map<WorkflowDefinitionDetailResponse>(workflowDefinition);
+            return _mapper.Map<WorkflowDefinitionDetailResponse>(model);
         }
 
 

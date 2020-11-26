@@ -1,4 +1,5 @@
 using AutoMapper;
+using Elsa.Dashboard.Areas.Elsa.ViewModels;
 using Elsa.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace ZinL.MappingProfile
         private void ModelToResponse()
         {
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionListResponse>();
-            CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionDetailResponse>();
+            CreateMap<WorkflowDefinitionEditModel, WorkflowDefinitionDetailResponse>();
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionCreateResponse>();
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionEditResponse>();
         }
