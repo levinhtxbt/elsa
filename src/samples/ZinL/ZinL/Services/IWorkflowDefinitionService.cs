@@ -10,7 +10,7 @@ namespace ZinL.Services
 {
     public interface IWorkflowDefinitionService
     {
-        Task<List<WorkflowDefinitionListResponse>> GetListDefinitionAsync(CancellationToken cancellationToken);
+        Task<WorkflowDefinitionListViewModel> GetListDefinitionAsync(CancellationToken cancellationToken);
 
         Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken);
 

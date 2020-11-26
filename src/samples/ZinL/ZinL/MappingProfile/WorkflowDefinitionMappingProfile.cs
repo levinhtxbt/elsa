@@ -28,6 +28,20 @@ namespace ZinL.MappingProfile
             CreateMap<WorkflowDefinitionEditModel, WorkflowDefinitionDetailResponse>();
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionCreateResponse>();
             CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionEditResponse>();
+
+            CreateMap<WorkflowDefinitionListViewModel, WorkflowDefinitionListResponse1>()
+                .ForMember(x => x.WorkflowDefinitions, 
+                    opt => opt.MapFrom(y => y.WorkflowDefinitions));
+
+            //CreateMap<WorkflowDefinitionListViewModel, WorkflowDefinitionListResponse1>()
+            //    .ForMember(x => x.WorkflowDefinitions,
+            //        opt => opt.MapFrom(y =>
+            //            Mapper.Map<IList<IGrouping<string, WorkflowDefinitionListItemModel>>, IList<IGrouping<string, WorkflowDefinitionResponse>>>(y).ToArray()));
+
+            //CreateMap<WorkflowDefinitionListItemModel, WorkflowDefinitionResponse>()
+            //    .ForMember(x => x.WorkflowDefinition, opt => opt.MapFrom(x => x.WorkflowDefinition));
+
+            //CreateMap<WorkflowDefinitionVersion, WorkflowDefinitionVersionResponse>();
         }
     }
 }

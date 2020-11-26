@@ -54,7 +54,7 @@ namespace ZinL.Services
             _options = options;
         }
       
-        public async Task<List<WorkflowDefinitionListResponse>> GetListDefinitionAsync(CancellationToken cancellationToken)
+        public async Task<WorkflowDefinitionListViewModel> GetListDefinitionAsync(CancellationToken cancellationToken)
         {
             var workflows = await _workflowDefinitionStore.ListAsync(
                 VersionOptions.LatestOrPublished, cancellationToken);
@@ -72,14 +72,12 @@ namespace ZinL.Services
             }
 
             var groups = workflowModels.GroupBy(x => x.WorkflowDefinition.DefinitionId);
-            var model = new WorkflowDefinitionListViewModel
+            var result = new WorkflowDefinitionListViewModel
             {
                 WorkflowDefinitions = groups.ToList()
             };
 
-            //var result  = _mapper.Map<>
-
-            return _mapper.Map<List<WorkflowDefinitionListResponse>>(workflows);
+            return result;
         }
 
         public async Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
