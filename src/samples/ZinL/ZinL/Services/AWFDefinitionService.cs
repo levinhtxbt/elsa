@@ -25,7 +25,7 @@ using Elsa.Dashboard.Options;
 
 namespace ZinL.Services
 {
-    public class WorkflowDefinitionService : IWorkflowDefinitionService
+    public class AWFDefinitionService : IAWFDefinitionService
     {
         private readonly ElsaDBContext _elsaDBContext;
         private readonly IWorkflowDefinitionStore _workflowDefinitionStore;
@@ -36,7 +36,7 @@ namespace ZinL.Services
         private readonly IOptions<ElsaDashboardOptions> _options;
 
 
-        public WorkflowDefinitionService(
+        public AWFDefinitionService(
            ElsaContext elsaDBContext,
            IWorkflowDefinitionStore workflowDefinitionStore,
            IWorkflowInstanceStore workflowInstanceStore,
@@ -80,7 +80,7 @@ namespace ZinL.Services
             return result;
         }
 
-        public async Task<WorkflowDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
+        public async Task<AWFDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken)
         {
             var workflowDefinition = await _publisher.GetDraftAsync(id, cancellationToken);
 
@@ -105,7 +105,7 @@ namespace ZinL.Services
                 WorkflowModel = workflowModel
             };
 
-            return _mapper.Map<WorkflowDefinitionDetailResponse>(model);
+            return _mapper.Map<AWFDefinitionDetailResponse>(model);
         }
 
 
@@ -127,7 +127,7 @@ namespace ZinL.Services
             };
         }
 
-        public async Task<WorkflowDefinitionCreateResponse> CreateDefinitionAsunc(WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
+        public async Task<AWFDefinitionCreateResponse> CreateDefinitionAsunc(WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
         {
             var workflow = new WorkflowDefinitionVersion();
             var postedWorkflow = _serializer.Deserialize<WorkflowModel>(model.Json, JsonTokenFormatter.FormatName);
@@ -155,10 +155,10 @@ namespace ZinL.Services
                 workflow = await _publisher.SaveDraftAsync(workflow, cancellationToken);
             }
 
-            return _mapper.Map<WorkflowDefinitionCreateResponse>(workflow);
+            return _mapper.Map<AWFDefinitionCreateResponse>(workflow);
         }
 
-        public async Task<WorkflowDefinitionEditResponse> EditDefinitionAsunc(string id, WorkflowDefinitionEditModel request, CancellationToken cancellationToken)
+        public async Task<AWFDefinitionEditResponse> EditDefinitionAsunc(string id, WorkflowDefinitionEditModel request, CancellationToken cancellationToken)
         {
             var workflow = await _workflowDefinitionStore.GetByIdAsync(id, VersionOptions.Latest, cancellationToken);
 
@@ -190,7 +190,7 @@ namespace ZinL.Services
                 workflow = await _publisher.SaveDraftAsync(workflow, cancellationToken);
             }
 
-            return _mapper.Map<WorkflowDefinitionEditResponse>(workflow);
+            return _mapper.Map<AWFDefinitionEditResponse>(workflow);
         }
 
         public async Task<string> DeleteDefinitionAsunc(string id, CancellationToken cancellationToken)

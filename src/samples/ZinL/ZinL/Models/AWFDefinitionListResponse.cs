@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZinL.Models
 {
-    public class WorkflowDefinitionVersionResponse
+    public class AWFDefinitionListResponse
     {
         public string Id { get; set; }
         public string DefinitionId { get; set; }

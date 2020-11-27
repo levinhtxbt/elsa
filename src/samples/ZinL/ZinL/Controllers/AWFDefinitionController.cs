@@ -12,12 +12,12 @@ namespace ZinL.Controllers
     [Area("AWF")]
     [Route("[area]/workflow-definition")]
     [ApiController]
-    public class AutomationWorkflowDefinitionController : SS.Lib.Http.ControllerBase
+    public class AWFDefinitionController : SS.Lib.Http.ControllerBase
     {
 
-        private readonly IWorkflowDefinitionService _workflowDefinitionService;
+        private readonly IAWFDefinitionService _workflowDefinitionService;
 
-        public AutomationWorkflowDefinitionController(IWorkflowDefinitionService workflowDefinitionService)
+        public AWFDefinitionController(IAWFDefinitionService workflowDefinitionService)
         {
             _workflowDefinitionService = workflowDefinitionService;
         }

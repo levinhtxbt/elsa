@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZinL.Models
 {
-    public class WorkflowDefinitionResponse
+    public class AWFDefinitionResponse
     {
-        public WorkflowDefinitionVersionResponse WorkflowDefinition { get; set; }
+        public AWFDefinitionVersionResponse WorkflowDefinition { get; set; }
         public int ExecutingCount { get; set; }
         public int FaultedCount { get; set; }
         public int AbortedCount { get; set; }

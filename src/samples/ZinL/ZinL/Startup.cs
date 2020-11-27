@@ -49,7 +49,7 @@ namespace ZinL
                 .AddElsaDashboard();
 
             services.AddControllers();
-            services.AddScoped<IWorkflowDefinitionService, WorkflowDefinitionService>();
+            services.AddScoped<IAWFDefinitionService, AWFDefinitionService>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

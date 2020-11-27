@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ZinL.Models
 {
-    public class WorkflowDefinitionDetailResponse
+    public class AWFDefinitionDetailResponse
     {
         public string Id { get; set; }
         public string Json { get; set; }

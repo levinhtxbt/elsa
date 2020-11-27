@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ZinL.Models
 {
-    public class WorkflowDefinitionListResponse1
+    public class AWFDefinitionListResponse1
     {
-        public IList<IGrouping<string, WorkflowDefinitionResponse>> WorkflowDefinitions { get; set; }
+        public IList<IGrouping<string, AWFDefinitionResponse>> WorkflowDefinitions { get; set; }
     }
 }
