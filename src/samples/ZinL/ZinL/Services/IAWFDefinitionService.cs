@@ -1,10 +1,7 @@
 using Elsa.Dashboard.Areas.Elsa.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ZinL.Models;
+using ZinL.Models.Definition;
 
 namespace ZinL.Services
 {
@@ -14,10 +11,10 @@ namespace ZinL.Services
 
         Task<AWFDefinitionDetailResponse> GetDetailDefinitionAsync(string id, CancellationToken cancellationToken);
 
-        Task<AWFDefinitionCreateResponse> CreateDefinitionAsunc(WorkflowDefinitionEditModel model, CancellationToken cancellationToken);
+        Task<AWFDefinitionCreateResponse> CreateDefinitionAsync(WorkflowDefinitionEditModel model, CancellationToken cancellationToken);
 
-        Task<AWFDefinitionEditResponse> EditDefinitionAsunc(string id, WorkflowDefinitionEditModel model, CancellationToken cancellationToken);
+        Task<AWFDefinitionEditResponse> EditDefinitionAsync(string id, WorkflowDefinitionEditModel model, CancellationToken cancellationToken);
 
-        Task<string> DeleteDefinitionAsunc(string id, CancellationToken cancellationToken);
+        Task<string> DeleteDefinitionAsync(string id, CancellationToken cancellationToken);
     }
 }

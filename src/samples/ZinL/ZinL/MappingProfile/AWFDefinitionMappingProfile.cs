@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZinL.Models;
+using ZinL.Models.Definition;
 
 namespace ZinL.MappingProfile
 {

@@ -9,19 +9,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using ZinL.Domain;
 using ZinL.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System;
-using Microsoft.Extensions.DependencyInjection;
 using Elsa.Persistence.EntityFrameworkCore.DbContexts;
-using AutoMapper;
 using Elsa.WorkflowDesigner.Models;
 using Elsa.Serialization.Formatters;
-using Elsa.Dashboard.Models;
 using SS.Lib.Http;
 using Microsoft.AspNetCore.Http;
 using ZinL.Models.Common;
 using Elsa.Dashboard.Options;
+using ZinL.Models.Definition;
 
 namespace ZinL.Services
 {
@@ -127,7 +123,7 @@ namespace ZinL.Services
             };
         }
 
-        public async Task<AWFDefinitionCreateResponse> CreateDefinitionAsunc(WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
+        public async Task<AWFDefinitionCreateResponse> CreateDefinitionAsync(WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
         {
             var workflow = new WorkflowDefinitionVersion();
             var postedWorkflow = _serializer.Deserialize<WorkflowModel>(model.Json, JsonTokenFormatter.FormatName);
@@ -158,7 +154,7 @@ namespace ZinL.Services
             return _mapper.Map<AWFDefinitionCreateResponse>(workflow);
         }
 
-        public async Task<AWFDefinitionEditResponse> EditDefinitionAsunc(string id, WorkflowDefinitionEditModel request, CancellationToken cancellationToken)
+        public async Task<AWFDefinitionEditResponse> EditDefinitionAsync(string id, WorkflowDefinitionEditModel request, CancellationToken cancellationToken)
         {
             var workflow = await _workflowDefinitionStore.GetByIdAsync(id, VersionOptions.Latest, cancellationToken);
 
@@ -193,7 +189,7 @@ namespace ZinL.Services
             return _mapper.Map<AWFDefinitionEditResponse>(workflow);
         }
 
-        public async Task<string> DeleteDefinitionAsunc(string id, CancellationToken cancellationToken)
+        public async Task<string> DeleteDefinitionAsync(string id, CancellationToken cancellationToken)
         {
             await _workflowDefinitionStore.DeleteAsync(id, cancellationToken);
 

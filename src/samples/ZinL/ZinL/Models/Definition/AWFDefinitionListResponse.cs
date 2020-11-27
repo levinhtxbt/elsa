@@ -1,12 +1,9 @@
 using Elsa.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ZinL.Models
+namespace ZinL.Models.Definition
 {
-    public class AWFDefinitionVersionResponse
+    public class AWFDefinitionListResponse
     {
         public string Id { get; set; }
         public string DefinitionId { get; set; }

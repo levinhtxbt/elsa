@@ -51,7 +51,7 @@ namespace ZinL.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _workflowDefinitionService.CreateDefinitionAsunc(model, cancellationToken);
+                var response = await _workflowDefinitionService.CreateDefinitionAsync(model, cancellationToken);
                 return Ok(response);
             }
             else
@@ -63,7 +63,7 @@ namespace ZinL.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _workflowDefinitionService.EditDefinitionAsunc(id, model, cancellationToken);
+                var response = await _workflowDefinitionService.EditDefinitionAsync(id, model, cancellationToken);
                 return Ok(response);
             }
             else
@@ -75,7 +75,7 @@ namespace ZinL.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _workflowDefinitionService.DeleteDefinitionAsunc(id, cancellationToken);
+                var response = await _workflowDefinitionService.DeleteDefinitionAsync(id, cancellationToken);
                 return Ok(response);
             }
             else

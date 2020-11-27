@@ -1,12 +1,7 @@
 using Elsa.Metadata;
-using Elsa.Models;
 using Elsa.WorkflowDesigner.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ZinL.Models
+namespace ZinL.Models.Definition
 {
     public class AWFDefinitionDetailResponse
     {
