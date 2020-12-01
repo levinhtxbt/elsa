@@ -81,7 +81,7 @@ namespace ZinL.Services
             var workflowDefinition = await _publisher.GetDraftAsync(id, cancellationToken);
 
             if (workflowDefinition == null)
-                throw new ErrorException(StatusCodes.Status404NotFound, $"Can't not found workflow definition with {id}");
+                throw new ErrorException(StatusCodes.Status404NotFound, $"Can not found workflow definition with definationId: {id}");
 
             var workflowModel = new WorkflowModel
             {

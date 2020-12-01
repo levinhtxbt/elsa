@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ZinL.Models.Instance;
 using ZinL.Services;
 
 namespace ZinL.Controllers
@@ -21,11 +22,11 @@ namespace ZinL.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetWorkflowDefinition(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetWorkflowDefinition(AWFInstanceListRequest request, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
-                var response = await _workflowInstanceService.GetListInstanceAsync(cancellationToken);
+                var response = await _workflowInstanceService.GetListInstanceAsync(request, cancellationToken);
                 return Ok(response);
             }
             else
@@ -33,11 +34,11 @@ namespace ZinL.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDetailWorkflowDefinition(string id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetDetailWorkflowDefinition(string id, string returnUrl, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
-                var response = await _workflowInstanceService.GetDetailInstanceAsync(id, cancellationToken);
+                var response = await _workflowInstanceService.GetDetailInstanceAsync(id, returnUrl, cancellationToken);
                 return Ok(response);
             }
             else

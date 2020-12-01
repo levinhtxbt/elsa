@@ -10,9 +10,9 @@ namespace ZinL.Services
 {
     public interface IAWFInstanceService
     {
-        Task<WorkflowInstanceListViewModel> GetListInstanceAsync(CancellationToken cancellationToken);
+        Task<WorkflowInstanceListViewModel> GetListInstanceAsync(AWFInstanceListRequest request, CancellationToken cancellationToken);
 
-        Task<AWFInstanceDetailResponse> GetDetailInstanceAsync(string id, CancellationToken cancellationToken);
+        Task<AWFInstanceDetailResponse> GetDetailInstanceAsync(string id, string returnUrl, CancellationToken cancellationToken);
 
         //Task<AWFInstanceCreateResponse> CreateInstanceAsync(WorkflowDefinitionEditModel model, CancellationToken cancellationToken);
 
