@@ -18,6 +18,11 @@ using ZinL.Activities.Customer.Activities;
 using ZinL.Activities.Email;
 using ZinL.Activities.Sms;
 using ZinL.Domain;
+using Microsoft.OpenApi.Models;
+using ZinL.Services;
+using AutoMapper;
+using ZinL.MappingProfile;
+using ZinL.Controllers;
 
 namespace ZinL
 {
@@ -51,6 +56,24 @@ namespace ZinL
                 .AddEmailActivities(options => options.Bind(_configuration.GetSection("Elsa:Smtp")))
                 .AddTimerActivities(options => options.Bind(_configuration.GetSection("Elsa:Timers")))
                 .AddElsaDashboard();
+
+            services.AddControllers();
+            services.AddScoped<IAWFDefinitionService, AWFDefinitionService>();
+            services.AddScoped<IAWFInstanceService, AWFInstanceService>();
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+            // Auto Mapper Configurations
+            services.AddAutoMapper(typeof(AutoMapperConfig));
+            services.AddMvc().AddNewtonsoftJson();
+
+            services.AddControllers(o =>
+            {
+                o.Conventions.Add(new ActionHidingConvention());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,11 +84,18 @@ namespace ZinL
                 app.UseDeveloperExceptionPage();
             }
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
             app.UseRouting();
             app.UseHttpActivities();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
-            app.UseWelcomePage();
         }
     }
 }

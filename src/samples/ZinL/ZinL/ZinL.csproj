@@ -9,6 +9,8 @@
         <!--<PackageReference Include="Elsa" Version="1.4.4" />
         <PackageReference Include="Elsa.Dashboard" Version="1.4.4" />
         <PackageReference Include="Elsa.Persistence.EntityFrameworkCore" Version="1.4.4" />-->
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,6 +21,8 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -28,6 +32,18 @@
       <ProjectReference Include="..\..\..\core\Elsa\Elsa.csproj" />
       <ProjectReference Include="..\..\..\dashboard\Elsa.Dashboard\Elsa.Dashboard.csproj" />
       <ProjectReference Include="..\..\..\persistence\Elsa.Persistence.EntityFrameworkCore\Elsa.Persistence.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="SS.Lib">
+        <HintPath>..\..\..\package\SS.Lib.dll</HintPath>
+      </Reference>
+      <Reference Include="SS.Lib.Http">
+        <HintPath>..\..\..\package\SS.Lib.Http.dll</HintPath>
+      </Reference>
+      <Reference Include="SS.Lib.Linq">
+        <HintPath>..\..\..\package\SS.Lib.Linq.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
