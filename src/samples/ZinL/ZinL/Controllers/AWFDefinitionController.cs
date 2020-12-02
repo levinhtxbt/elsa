@@ -22,6 +22,11 @@ namespace ZinL.Controllers
             _workflowDefinitionService = workflowDefinitionService;
         }
 
+        /// <summary>
+        /// Get list workflow definition
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetWorkflowDefinition(CancellationToken cancellationToken)
         {
@@ -34,6 +39,12 @@ namespace ZinL.Controllers
                 return ThrowModelErrorsException();
         }
 
+        /// <summary>
+        /// Get detail workflow definition
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDetailWorkflowDefinition(string id, CancellationToken cancellationToken)
         {
@@ -46,6 +57,12 @@ namespace ZinL.Controllers
                 return ThrowModelErrorsException();
         }
 
+        /// <summary>
+        /// Create workflow definition
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> CreateWorkflowDefinition(WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
         {
@@ -58,6 +75,13 @@ namespace ZinL.Controllers
                 return ThrowModelErrorsException();
         }
 
+        /// <summary>
+        /// Edit workflow definition
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> EditWorkflowDefinition(string id, WorkflowDefinitionEditModel model, CancellationToken cancellationToken)
         {
@@ -70,6 +94,12 @@ namespace ZinL.Controllers
                 return ThrowModelErrorsException();
         }
 
+        /// <summary>
+        /// Delete workflow definition
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWorkflowDefinition(string id, CancellationToken cancellationToken)
         {

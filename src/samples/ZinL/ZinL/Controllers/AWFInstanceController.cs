@@ -21,8 +21,14 @@ namespace ZinL.Controllers
             _workflowInstanceService = workflowInstanceService;
         }
 
+        /// <summary>
+        /// Get list instance workfklow
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetWorkflowDefinition(AWFInstanceListRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetWorkflowInstance(AWFInstanceListRequest request, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
@@ -33,8 +39,15 @@ namespace ZinL.Controllers
                 return ThrowModelErrorsException();
         }
 
+        /// <summary>
+        /// Get detail instance workfklow
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="returnUrl"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDetailWorkflowDefinition(string id, string returnUrl, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetDetailWorkflowInstance(string id, string returnUrl, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
@@ -57,8 +70,14 @@ namespace ZinL.Controllers
         //        return ThrowModelErrorsException();
         //}
 
+        /// <summary>
+        /// Delete instance workfklow
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteWorkflowDefinition(string id, CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteWorkflowInstance(string id, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
