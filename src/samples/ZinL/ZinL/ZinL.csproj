@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>4cc7c006-254e-4de6-86b8-d29597fd68b2</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>
@@ -22,6 +23,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\activities\ZinL.Activities.Customer\ZinL.Activities.Customer.csproj" />
+      <ProjectReference Include="..\..\..\activities\ZinL.Activities.Email\ZinL.Activities.Email.csproj" />
+      <ProjectReference Include="..\..\..\activities\ZinL.Activities.Sms\ZinL.Activities.Sms.csproj" />
       <ProjectReference Include="..\..\..\core\Elsa\Elsa.csproj" />
       <ProjectReference Include="..\..\..\dashboard\Elsa.Dashboard\Elsa.Dashboard.csproj" />
       <ProjectReference Include="..\..\..\persistence\Elsa.Persistence.EntityFrameworkCore\Elsa.Persistence.EntityFrameworkCore.csproj" />

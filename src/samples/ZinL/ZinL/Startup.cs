@@ -15,6 +15,8 @@ using Elsa.Persistence.EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ZinL.Activities.Customer.Activities;
+using ZinL.Activities.Email;
+using ZinL.Activities.Sms;
 using ZinL.Domain;
 
 namespace ZinL
@@ -31,7 +33,14 @@ namespace ZinL
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddActivity<SayHelloWorld>();
+            services.AddActivity<CustomerFilter>();
+            services.AddActivity<MarketRestrictions>();
+            services.AddActivity<SendSms>();
+            services.AddActivity<SendEmailWithTemplate>();
+            services.AddActivity<SendEmailWithoutTemplate>();
+            services.AddActivity<SendSms>();
+            services.AddActivity<VehicleMakeFilter>();
+            services.AddActivity<VehicleAppointmentFilter>();
 
             services
                 // Required services for Elsa to work. Registers things like `IWorkflowInvoker`.
