@@ -14,7 +14,7 @@ using MimeKit.Text;
 
 namespace Elsa.Activities.Email.Activities
 {
-    [ActivityDefinition(Category = "Email", Description = "Send an email message.")]
+    [ActivityDefinition(Category = "Email", Description = "Send an email message.", Icon = "fas fa-envelope")]
     public class SendEmail : Activity
     {
         private readonly IWorkflowExpressionEvaluator expressionEvaluator;

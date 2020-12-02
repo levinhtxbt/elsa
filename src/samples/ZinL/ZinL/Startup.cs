@@ -46,6 +46,9 @@ namespace ZinL
             services.AddActivity<SendSms>();
             services.AddActivity<VehicleMakeFilter>();
             services.AddActivity<VehicleAppointmentFilter>();
+            services.AddActivity<CustomerDataset>();
+            services.AddActivity<SetProperty>();
+            services.AddActivity<DelayUntilEvent>();
 
             services
                 // Required services for Elsa to work. Registers things like `IWorkflowInvoker`.

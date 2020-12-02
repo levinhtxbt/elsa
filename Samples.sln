@@ -137,9 +137,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Console.HttpWorkflow",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Activities.Customer", "src\activities\ZinL.Activities.Customer\ZinL.Activities.Customer.csproj", "{734641C1-0EFC-4A99-89C3-E813B3A20A21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZinL.Activities.Sms", "src\activities\ZinL.Activities.Sms\ZinL.Activities.Sms.csproj", "{2E347468-1D80-4685-B618-D6634BA7DF2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Activities.Sms", "src\activities\ZinL.Activities.Sms\ZinL.Activities.Sms.csproj", "{2E347468-1D80-4685-B618-D6634BA7DF2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZinL.Activities.Email", "src\activities\ZinL.Activities.Email\ZinL.Activities.Email.csproj", "{4303790E-3EFF-41A7-B266-0D570A65FA46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Activities.Email", "src\activities\ZinL.Activities.Email\ZinL.Activities.Email.csproj", "{4303790E-3EFF-41A7-B266-0D570A65FA46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
