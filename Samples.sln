@@ -140,6 +140,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Activities.Sms", "src\activities\ZinL.Activities.Sms\ZinL.Activities.Sms.csproj", "{2E347468-1D80-4685-B618-D6634BA7DF2F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZinL.Activities.Email", "src\activities\ZinL.Activities.Email\ZinL.Activities.Email.csproj", "{4303790E-3EFF-41A7-B266-0D570A65FA46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZinL.Activities.Library", "ZinL.Activities.Library\ZinL.Activities.Library.csproj", "{5F9DA4D3-5278-4444-8997-E311748CC37C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -363,6 +364,10 @@ Global
 		{4303790E-3EFF-41A7-B266-0D570A65FA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4303790E-3EFF-41A7-B266-0D570A65FA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4303790E-3EFF-41A7-B266-0D570A65FA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9DA4D3-5278-4444-8997-E311748CC37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9DA4D3-5278-4444-8997-E311748CC37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9DA4D3-5278-4444-8997-E311748CC37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9DA4D3-5278-4444-8997-E311748CC37C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -429,6 +434,7 @@ Global
 		{734641C1-0EFC-4A99-89C3-E813B3A20A21} = {526FE714-2302-4154-A2D4-98F0B348104B}
 		{2E347468-1D80-4685-B618-D6634BA7DF2F} = {526FE714-2302-4154-A2D4-98F0B348104B}
 		{4303790E-3EFF-41A7-B266-0D570A65FA46} = {526FE714-2302-4154-A2D4-98F0B348104B}
+		{5F9DA4D3-5278-4444-8997-E311748CC37C} = {526FE714-2302-4154-A2D4-98F0B348104B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B0975FD-7050-48B0-88C5-48C33378E158}
