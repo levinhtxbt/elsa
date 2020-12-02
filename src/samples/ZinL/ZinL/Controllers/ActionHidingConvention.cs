@@ -11,7 +11,7 @@ namespace ZinL.Controllers
     {
         public void Apply(ActionModel action)
         {
-            foreach (var item in Constants.ControllerName)
+            foreach (var item in Constants.HiddenControllerOnSwagger)
             {
                 if (action.Controller.ControllerName == item)
                 {
