@@ -13,3 +13,4 @@ namespace ZinL.Models.Common
         public const string DraffVersion = "draff";
     }
 }
+ 
