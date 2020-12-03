@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>4cc7c006-254e-4de6-86b8-d29597fd68b2</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>
@@ -9,23 +10,25 @@
         <PackageReference Include="Elsa.Dashboard" Version="1.4.4" />
         <PackageReference Include="Elsa.Persistence.EntityFrameworkCore" Version="1.4.4" />-->
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\activities\ZinL.Activities.Customer\ZinL.Activities.Customer.csproj" />
+      <ProjectReference Include="..\..\..\activities\ZinL.Activities.Email\ZinL.Activities.Email.csproj" />
+      <ProjectReference Include="..\..\..\activities\ZinL.Activities.Sms\ZinL.Activities.Sms.csproj" />
       <ProjectReference Include="..\..\..\core\Elsa\Elsa.csproj" />
       <ProjectReference Include="..\..\..\dashboard\Elsa.Dashboard\Elsa.Dashboard.csproj" />
       <ProjectReference Include="..\..\..\persistence\Elsa.Persistence.EntityFrameworkCore\Elsa.Persistence.EntityFrameworkCore.csproj" />
