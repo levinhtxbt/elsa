@@ -28,7 +28,7 @@ namespace ZinL.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetWorkflowInstance(AWFInstanceListRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetListWorkflowInstance(AWFInstanceListRequest request, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {

@@ -63,6 +63,7 @@ namespace ZinL
             services.AddControllers();
             services.AddScoped<IAWFDefinitionService, AWFDefinitionService>();
             services.AddScoped<IAWFInstanceService, AWFInstanceService>();
+            services.AddTransient<IAWFActivityService, AWFActivityService>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
