@@ -44,6 +44,9 @@
       <Reference Include="SS.Lib.Linq">
         <HintPath>..\..\..\package\SS.Lib.Linq.dll</HintPath>
       </Reference>
+      <Reference Include="SS.RabbitMq">
+        <HintPath>..\..\..\..\..\m1cx.api\src\SS\SS.RabbitMq\bin\Debug\netcoreapp3.1\SS.RabbitMq.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

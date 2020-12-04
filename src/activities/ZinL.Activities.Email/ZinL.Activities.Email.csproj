@@ -8,4 +8,10 @@
     <ProjectReference Include="..\..\core\Elsa.Core\Elsa.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SS.RabbitMq">
+      <HintPath>..\..\..\..\m1cx.api\src\SS\SS.RabbitMq\bin\Debug\netcoreapp3.1\SS.RabbitMq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
